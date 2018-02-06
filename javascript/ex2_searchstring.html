@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<center>
+
+Text Input : 
+	<textarea rows="4" cols="50" id="text">
+	</textarea>
+	<br><br>
+    
+Sensitive Case :
+	<input type="radio" name="case" value="yes" checked> Yes
+    <input type="radio" name="case" value="no"> No
+	<br><br>
+    
+Search : 
+	<input type="text" id="stext">
+	<br><br>
+    
+	<button type="button" id="search" onclick="Search()"> Search </button>
+	<br><br>
+    
+Result for Search : 
+	<span id="result"><span></center>
+
+</body>
+</html>
+<script>
+
+function Search(){
+    var txt1 = document.getElementById('text').value;
+    var txt2 = document.getElementById('stext').value;
+    var radio = document.querySelector('input[name="case"]:checked').value;
+      
+		if(radio=="yes"){
+				var re = new RegExp(txt2, 'g');
+				var count = txt1.match(re);
+			if(txt2==""||txt1==""){
+				document.getElementById('result').innerHTML = "Don't have any text";
+			}
+
+			else if(count==null){
+					document.getElementById('result').innerHTML = "0";
+			}
+			else{
+				document.getElementById('result').innerHTML = txt1.match(re).length;;
+			}
+		}
+		else if(radio=="no"){
+				var re = new RegExp(txt2, 'gi');
+				var count = txt1.match(re);
+			if(txt2==""||txt1==""){
+				document.getElementById('result').innerHTML = "Don't have any text";
+			}
+			else if(count==null){
+					document.getElementById('result').innerHTML = "0";
+				}
+			else{
+				document.getElementById('result').innerHTML = txt1.match(re).length;;
+			}
+		}
+    }
+    
+</script>
